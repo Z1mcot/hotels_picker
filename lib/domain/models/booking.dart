@@ -6,7 +6,7 @@ part 'booking.g.dart';
 @freezed
 class Booking with _$Booking {
   factory Booking({
-    int? id,
+    required int id,
     @JsonKey(name: 'hotel_name') String? hotelName,
     @JsonKey(name: 'hotel_adress') String? hotelAdress,
     int? horating,

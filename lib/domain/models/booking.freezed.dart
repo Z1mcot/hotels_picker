@@ -20,7 +20,7 @@ Booking _$BookingFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Booking {
-  int? get id => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'hotel_name')
   String? get hotelName => throw _privateConstructorUsedError;
   @JsonKey(name: 'hotel_adress')
@@ -57,7 +57,7 @@ abstract class $BookingCopyWith<$Res> {
       _$BookingCopyWithImpl<$Res, Booking>;
   @useResult
   $Res call(
-      {int? id,
+      {int id,
       @JsonKey(name: 'hotel_name') String? hotelName,
       @JsonKey(name: 'hotel_adress') String? hotelAdress,
       int? horating,
@@ -87,7 +87,7 @@ class _$BookingCopyWithImpl<$Res, $Val extends Booking>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
+    Object? id = null,
     Object? hotelName = freezed,
     Object? hotelAdress = freezed,
     Object? horating = freezed,
@@ -104,10 +104,10 @@ class _$BookingCopyWithImpl<$Res, $Val extends Booking>
     Object? serviceCharge = freezed,
   }) {
     return _then(_value.copyWith(
-      id: freezed == id
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as int,
       hotelName: freezed == hotelName
           ? _value.hotelName
           : hotelName // ignore: cast_nullable_to_non_nullable
@@ -176,7 +176,7 @@ abstract class _$$BookingImplCopyWith<$Res> implements $BookingCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {int? id,
+      {int id,
       @JsonKey(name: 'hotel_name') String? hotelName,
       @JsonKey(name: 'hotel_adress') String? hotelAdress,
       int? horating,
@@ -204,7 +204,7 @@ class __$$BookingImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
+    Object? id = null,
     Object? hotelName = freezed,
     Object? hotelAdress = freezed,
     Object? horating = freezed,
@@ -221,10 +221,10 @@ class __$$BookingImplCopyWithImpl<$Res>
     Object? serviceCharge = freezed,
   }) {
     return _then(_$BookingImpl(
-      id: freezed == id
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as int,
       hotelName: freezed == hotelName
           ? _value.hotelName
           : hotelName // ignore: cast_nullable_to_non_nullable
@@ -289,7 +289,7 @@ class __$$BookingImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$BookingImpl implements _Booking {
   _$BookingImpl(
-      {this.id,
+      {required this.id,
       @JsonKey(name: 'hotel_name') this.hotelName,
       @JsonKey(name: 'hotel_adress') this.hotelAdress,
       this.horating,
@@ -309,7 +309,7 @@ class _$BookingImpl implements _Booking {
       _$$BookingImplFromJson(json);
 
   @override
-  final int? id;
+  final int id;
   @override
   @JsonKey(name: 'hotel_name')
   final String? hotelName;
@@ -425,7 +425,7 @@ class _$BookingImpl implements _Booking {
 
 abstract class _Booking implements Booking {
   factory _Booking(
-          {final int? id,
+          {required final int id,
           @JsonKey(name: 'hotel_name') final String? hotelName,
           @JsonKey(name: 'hotel_adress') final String? hotelAdress,
           final int? horating,
@@ -445,7 +445,7 @@ abstract class _Booking implements Booking {
   factory _Booking.fromJson(Map<String, dynamic> json) = _$BookingImpl.fromJson;
 
   @override
-  int? get id;
+  int get id;
   @override
   @JsonKey(name: 'hotel_name')
   String? get hotelName;

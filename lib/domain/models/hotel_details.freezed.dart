@@ -20,7 +20,7 @@ HotelDetails _$HotelDetailsFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$HotelDetails {
-  String get description => throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError;
   List<String> get peculiarities => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -35,7 +35,7 @@ abstract class $HotelDetailsCopyWith<$Res> {
           HotelDetails value, $Res Function(HotelDetails) then) =
       _$HotelDetailsCopyWithImpl<$Res, HotelDetails>;
   @useResult
-  $Res call({String description, List<String> peculiarities});
+  $Res call({String? description, List<String> peculiarities});
 }
 
 /// @nodoc
@@ -51,14 +51,14 @@ class _$HotelDetailsCopyWithImpl<$Res, $Val extends HotelDetails>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? description = null,
+    Object? description = freezed,
     Object? peculiarities = null,
   }) {
     return _then(_value.copyWith(
-      description: null == description
+      description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       peculiarities: null == peculiarities
           ? _value.peculiarities
           : peculiarities // ignore: cast_nullable_to_non_nullable
@@ -75,7 +75,7 @@ abstract class _$$HotelDetailsImplCopyWith<$Res>
       __$$HotelDetailsImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String description, List<String> peculiarities});
+  $Res call({String? description, List<String> peculiarities});
 }
 
 /// @nodoc
@@ -89,14 +89,14 @@ class __$$HotelDetailsImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? description = null,
+    Object? description = freezed,
     Object? peculiarities = null,
   }) {
     return _then(_$HotelDetailsImpl(
-      description: null == description
+      description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       peculiarities: null == peculiarities
           ? _value._peculiarities
           : peculiarities // ignore: cast_nullable_to_non_nullable
@@ -109,16 +109,17 @@ class __$$HotelDetailsImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$HotelDetailsImpl implements _HotelDetails {
   const _$HotelDetailsImpl(
-      {required this.description, required final List<String> peculiarities})
+      {this.description, final List<String> peculiarities = const []})
       : _peculiarities = peculiarities;
 
   factory _$HotelDetailsImpl.fromJson(Map<String, dynamic> json) =>
       _$$HotelDetailsImplFromJson(json);
 
   @override
-  final String description;
+  final String? description;
   final List<String> _peculiarities;
   @override
+  @JsonKey()
   List<String> get peculiarities {
     if (_peculiarities is EqualUnmodifiableListView) return _peculiarities;
     // ignore: implicit_dynamic_type
@@ -162,14 +163,14 @@ class _$HotelDetailsImpl implements _HotelDetails {
 
 abstract class _HotelDetails implements HotelDetails {
   const factory _HotelDetails(
-      {required final String description,
-      required final List<String> peculiarities}) = _$HotelDetailsImpl;
+      {final String? description,
+      final List<String> peculiarities}) = _$HotelDetailsImpl;
 
   factory _HotelDetails.fromJson(Map<String, dynamic> json) =
       _$HotelDetailsImpl.fromJson;
 
   @override
-  String get description;
+  String? get description;
   @override
   List<String> get peculiarities;
   @override

@@ -8,7 +8,7 @@ part of 'booking.dart';
 
 _$BookingImpl _$$BookingImplFromJson(Map<String, dynamic> json) =>
     _$BookingImpl(
-      id: json['id'] as int?,
+      id: json['id'] as int,
       hotelName: json['hotel_name'] as String?,
       hotelAdress: json['hotel_adress'] as String?,
       horating: json['horating'] as int?,
