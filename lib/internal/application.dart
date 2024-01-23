@@ -7,6 +7,9 @@ class Application extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
+      theme: ThemeData(
+        fontFamily: 'SF Pro Display',
+      ),
       debugShowCheckedModeBanner: false,
       routerConfig: MainRouter.router,
     );

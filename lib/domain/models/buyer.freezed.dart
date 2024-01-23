@@ -106,7 +106,7 @@ class __$$BuyerImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$BuyerImpl implements _Buyer {
-  _$BuyerImpl(
+  const _$BuyerImpl(
       {@JsonKey(name: 'phone_number') required this.phoneNumber,
       required this.email});
 
@@ -153,7 +153,7 @@ class _$BuyerImpl implements _Buyer {
 }
 
 abstract class _Buyer implements Buyer {
-  factory _Buyer(
+  const factory _Buyer(
       {@JsonKey(name: 'phone_number') required final String phoneNumber,
       required final String email}) = _$BuyerImpl;
 

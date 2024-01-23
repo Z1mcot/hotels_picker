@@ -5,7 +5,7 @@ part 'bill.g.dart';
 
 @freezed
 class Bill with _$Bill {
-  factory Bill({
+  const factory Bill({
     required int tour,
     @JsonKey(name: 'fuel_fee') required int fuelFee,
     @JsonKey(name: 'service_fee') required int serviceFee,

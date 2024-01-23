@@ -288,7 +288,7 @@ class __$$BookingImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$BookingImpl implements _Booking {
-  _$BookingImpl(
+  const _$BookingImpl(
       {required this.id,
       @JsonKey(name: 'hotel_name') this.hotelName,
       @JsonKey(name: 'hotel_adress') this.hotelAdress,
@@ -424,7 +424,7 @@ class _$BookingImpl implements _Booking {
 }
 
 abstract class _Booking implements Booking {
-  factory _Booking(
+  const factory _Booking(
           {required final int id,
           @JsonKey(name: 'hotel_name') final String? hotelName,
           @JsonKey(name: 'hotel_adress') final String? hotelAdress,

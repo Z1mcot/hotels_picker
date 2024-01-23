@@ -5,7 +5,7 @@ part 'buyer.g.dart';
 
 @freezed
 class Buyer with _$Buyer {
-  factory Buyer({
+  const factory Buyer({
     @JsonKey(name: 'phone_number') required String phoneNumber,
     required String email,
   }) = _Buyer;

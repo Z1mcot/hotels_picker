@@ -164,7 +164,7 @@ class __$$TouristImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$TouristImpl implements _Tourist {
-  _$TouristImpl(
+  const _$TouristImpl(
       {@JsonKey(name: 'first_name') required this.firstName,
       required this.surname,
       required this.birthdate,
@@ -234,7 +234,7 @@ class _$TouristImpl implements _Tourist {
 }
 
 abstract class _Tourist implements Tourist {
-  factory _Tourist(
+  const factory _Tourist(
       {@JsonKey(name: 'first_name') required final String firstName,
       required final String surname,
       required final DateTime birthdate,

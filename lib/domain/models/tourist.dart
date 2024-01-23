@@ -5,7 +5,7 @@ part 'tourist.g.dart';
 
 @freezed
 class Tourist with _$Tourist {
-  factory Tourist({
+  const factory Tourist({
     @JsonKey(name: 'first_name') required String firstName,
     required String surname,
     required DateTime birthdate,

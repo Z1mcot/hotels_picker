@@ -136,7 +136,7 @@ class __$$BillImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$BillImpl implements _Bill {
-  _$BillImpl(
+  const _$BillImpl(
       {required this.tour,
       @JsonKey(name: 'fuel_fee') required this.fuelFee,
       @JsonKey(name: 'service_fee') required this.serviceFee,
@@ -193,7 +193,7 @@ class _$BillImpl implements _Bill {
 }
 
 abstract class _Bill implements Bill {
-  factory _Bill(
+  const factory _Bill(
       {required final int tour,
       @JsonKey(name: 'fuel_fee') required final int fuelFee,
       @JsonKey(name: 'service_fee') required final int serviceFee,
