@@ -113,14 +113,16 @@ class OrderScreen extends StatelessWidget {
                 PhoneInputField(
                   controller: viewModel.phoneController,
                   shouldValidate: viewModel.state.shouldValidateForms,
-                  validator: viewModel.validateFormFields,
+                  validator: (val) =>
+                      viewModel.validateFormFields(val, 'phone'),
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8.0),
                   child: EmailInputField(
                     controller: viewModel.emailController,
                     shouldValidate: viewModel.state.shouldValidateForms,
-                    validator: viewModel.validateFormFields,
+                    validator: (val) =>
+                        viewModel.validateFormFields(val, 'email'),
                   ),
                 ),
                 const Text(

@@ -105,7 +105,10 @@ class _CustomExpansionTileState extends State<CustomExpansionTile> {
               hint: 'Ivan',
               initialValue: tourist?.firstName,
               shouldValidate: viewModel.state.shouldValidateForms,
-              validator: viewModel.validateFormFields,
+              validator: (val) => viewModel.validateFormFields(
+                val,
+                '${widget.touristIndex}_first_name',
+              ),
             ),
           ),
           Padding(
@@ -116,7 +119,10 @@ class _CustomExpansionTileState extends State<CustomExpansionTile> {
               hint: 'Ivanovich',
               initialValue: tourist?.surname,
               shouldValidate: viewModel.state.shouldValidateForms,
-              validator: viewModel.validateFormFields,
+              validator: (val) => viewModel.validateFormFields(
+                val,
+                '${widget.touristIndex}_surname',
+              ),
             ),
           ),
           Padding(
@@ -129,7 +135,10 @@ class _CustomExpansionTileState extends State<CustomExpansionTile> {
               lastDate: DateTime.now(),
               initialValue: tourist?.birthdate,
               shouldValidate: viewModel.state.shouldValidateForms,
-              validator: viewModel.validateFormFields,
+              validator: (val) => viewModel.validateFormFields(
+                val,
+                '${widget.touristIndex}_birthdate',
+              ),
             ),
           ),
           Padding(
@@ -139,7 +148,10 @@ class _CustomExpansionTileState extends State<CustomExpansionTile> {
               onChanged: widget.onCitizenshipChanged,
               initialValue: tourist?.citizenship,
               shouldValidate: viewModel.state.shouldValidateForms,
-              validator: viewModel.validateFormFields,
+              validator: (val) => viewModel.validateFormFields(
+                val,
+                '${widget.touristIndex}_citizenship',
+              ),
             ),
           ),
           Padding(
@@ -149,7 +161,10 @@ class _CustomExpansionTileState extends State<CustomExpansionTile> {
               onChanged: widget.onPassportChanged,
               initialValue: tourist?.passportNumber,
               shouldValidate: viewModel.state.shouldValidateForms,
-              validator: viewModel.validateFormFields,
+              validator: (val) => viewModel.validateFormFields(
+                val,
+                '${widget.touristIndex}_passport_number',
+              ),
             ),
           ),
           Padding(
@@ -162,7 +177,10 @@ class _CustomExpansionTileState extends State<CustomExpansionTile> {
               lastDate: DateTime(dtNow.year + 10, dtNow.month, dtNow.day),
               initialValue: tourist?.passportExpiryDate,
               shouldValidate: viewModel.state.shouldValidateForms,
-              validator: viewModel.validateFormFields,
+              validator: (val) => viewModel.validateFormFields(
+                val,
+                '${widget.touristIndex}_passport_expiry_date',
+              ),
             ),
           ),
         ],

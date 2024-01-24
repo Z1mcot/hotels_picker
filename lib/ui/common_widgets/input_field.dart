@@ -82,10 +82,7 @@ class _InputFieldState extends State<InputField> {
   }
 
   void onFocusChanged() {
-    if (widget.validatorMode == ValidatorModesEnum.alwaysValidate ||
-        widget.shouldValidate) {
-      _validate();
-    }
+    _validate();
   }
 
   @override
@@ -95,10 +92,17 @@ class _InputFieldState extends State<InputField> {
 
     if (widget.shouldValidate) _validate();
 
+    final showValidationErrors =
+        (widget.validatorMode == ValidatorModesEnum.alwaysValidate ||
+                widget.shouldValidate) &&
+            !_isValid;
+
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        color: !_isValid ? CustomColors.error : CustomColors.pageBackground,
+        color: showValidationErrors
+            ? CustomColors.error
+            : CustomColors.pageBackground,
       ),
       child: TextFormField(
         readOnly: widget.readOnly ?? false,

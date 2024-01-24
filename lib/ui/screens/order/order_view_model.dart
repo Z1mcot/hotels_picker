@@ -32,7 +32,7 @@ class OrderViewModel with ChangeNotifier {
     state = _state.copyWith(shouldValidateForms: true);
   }
 
-  bool validateFormFields(Object? fieldValue) {
+  bool validateFormFields(Object? fieldValue, String validationFieldKey) {
     var isValid = true;
 
     if (fieldValue == null || (fieldValue is String && fieldValue.isEmpty)) {
@@ -41,6 +41,13 @@ class OrderViewModel with ChangeNotifier {
       isValid = fieldValue;
     }
 
+    var invalidFields = Set<String>.from(_state.invalidFields);
+    isValid
+        ? invalidFields.remove(validationFieldKey)
+        : invalidFields.add(validationFieldKey);
+    _state = state.copyWith(
+      invalidFields: invalidFields,
+    );
     return isValid;
   }
 
@@ -54,10 +61,15 @@ class OrderViewModel with ChangeNotifier {
     var newTourist = const Tourist();
     var tourists = List<Tourist>.from(_state.tourists);
     tourists.add(newTourist);
+
     onExpansionChanged(tourists.length - 1);
+
+    final invalidFields = _addTouristsFieldsToValidation();
+
     state = state.copyWith(
       tourists: tourists,
       includedTouristsCount: tourists.length,
+      invalidFields: invalidFields,
     );
   }
 
@@ -124,38 +136,57 @@ class OrderViewModel with ChangeNotifier {
     notifyListeners();
   }
 
+  Set<String> _addTouristsFieldsToValidation() {
+    var invalidFields = <String>{};
+    for (int i = 0; i < state.tourists.length; i++) {
+      var touristJson = state.tourists[i].toJson();
+      for (var key in touristJson.keys) {
+        if (touristJson[key] != null) continue;
+        invalidFields.add('${i}_$key');
+      }
+    }
+    return invalidFields;
+  }
+
   Future<void> _asyncInit() async {
     if (state.isLoading) return;
     state = state.copyWith(isLoading: true);
 
     final booking = await _apiRepository.getBookingInfo();
 
+    var invalidFields = {
+      'phone',
+      'email',
+    };
+
+    invalidFields.addAll(_addTouristsFieldsToValidation());
+
     state = state.copyWith(
       isLoading: false,
+      invalidFields: invalidFields,
       bookingInfo: booking,
     );
   }
 
   void onFinishOrder() async {
-    startValidating();
-
-    if (state.tourists.any((element) => element == const Tourist())) {
-      return;
+    if (!state.shouldValidateForms) {
+      startValidating();
     }
-    _toPlacedOrder();
+
+    if (state.invalidFields.isNotEmpty) return;
+
+    await _toPlacedOrder();
   }
 
-  void _toPlacedOrder() {
-    context
-        .pushNamed<bool>(
-      RoutesNamesEnum.orderPlacedScreen.name,
-    )
-        .then((goToRoot) {
-      if (goToRoot ?? false) {
-        context.pop(true);
-      }
-    });
-  }
+  Future<void> _toPlacedOrder() => context
+          .pushNamed<bool>(
+        RoutesNamesEnum.orderPlacedScreen.name,
+      )
+          .then((goToRoot) {
+        if (goToRoot ?? false) {
+          context.pop(true);
+        }
+      });
 
   List<String> get infoRowsKeys => [
         'departure',

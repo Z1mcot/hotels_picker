@@ -6,7 +6,7 @@ import 'package:hotels_picker/domain/models/tourist.dart';
 class OrderState {
   final bool isLoading;
   final bool shouldValidateForms;
-  final bool isValid;
+  final Set<String> invalidFields;
   final Booking? bookingInfo;
   final Buyer buyer;
   final int includedTouristsCount;
@@ -17,7 +17,7 @@ class OrderState {
   OrderState({
     this.isLoading = false,
     this.shouldValidateForms = false,
-    this.isValid = true,
+    this.invalidFields = const {},
     this.bookingInfo,
     this.buyer = const Buyer(phoneNumber: '', email: ''),
     this.tourists = const [Tourist()],
@@ -29,7 +29,7 @@ class OrderState {
   OrderState copyWith({
     bool? isLoading,
     bool? shouldValidateForms,
-    bool? isValid,
+    Set<String>? invalidFields,
     Booking? bookingInfo,
     Buyer? buyer,
     int? includedTouristsCount,
@@ -40,7 +40,7 @@ class OrderState {
     return OrderState(
       isLoading: isLoading ?? this.isLoading,
       shouldValidateForms: shouldValidateForms ?? this.shouldValidateForms,
-      isValid: isValid ?? this.isValid,
+      invalidFields: invalidFields ?? this.invalidFields,
       bookingInfo: bookingInfo ?? this.bookingInfo,
       buyer: buyer ?? this.buyer,
       includedTouristsCount:
