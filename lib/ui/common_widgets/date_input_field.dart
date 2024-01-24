@@ -10,6 +10,8 @@ class DateInputField extends StatefulWidget {
   final DateTime firstDate;
   final DateTime lastDate;
   final DateTime? initialValue;
+  final bool shouldValidate;
+  final bool Function(Object? val) validator;
 
   const DateInputField({
     super.key,
@@ -19,6 +21,8 @@ class DateInputField extends StatefulWidget {
     required this.lastDate,
     this.onChanged,
     this.initialValue,
+    required this.shouldValidate,
+    required this.validator,
   });
 
   @override
@@ -42,7 +46,6 @@ class _DateInputFieldState extends State<DateInputField> {
 
   @override
   void dispose() {
-    _controller.dispose();
     super.dispose();
   }
 
@@ -62,6 +65,8 @@ class _DateInputFieldState extends State<DateInputField> {
   @override
   Widget build(BuildContext context) {
     return InputField(
+      shouldValidate: widget.shouldValidate,
+      validator: widget.validator,
       readOnly: true,
       label: widget.label,
       controller: _controller,

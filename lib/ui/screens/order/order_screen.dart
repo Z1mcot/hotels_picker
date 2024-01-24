@@ -112,11 +112,15 @@ class OrderScreen extends StatelessWidget {
               children: [
                 PhoneInputField(
                   controller: viewModel.phoneController,
+                  shouldValidate: viewModel.state.shouldValidateForms,
+                  validator: viewModel.validateFormFields,
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8.0),
                   child: EmailInputField(
                     controller: viewModel.emailController,
+                    shouldValidate: viewModel.state.shouldValidateForms,
+                    validator: viewModel.validateFormFields,
                   ),
                 ),
                 const Text(
@@ -210,7 +214,7 @@ class OrderScreen extends StatelessWidget {
               child: Expanded(
                 child: CustomButton(
                   label: 'Оплатить ${totalPrice.asCurrency()}',
-                  onPressed: viewModel.toPlacedOrder,
+                  onPressed: viewModel.onFinishOrder,
                 ),
               ),
             )

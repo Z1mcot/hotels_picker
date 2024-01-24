@@ -28,6 +28,22 @@ class OrderViewModel with ChangeNotifier {
     );
   }
 
+  void startValidating() {
+    state = _state.copyWith(shouldValidateForms: true);
+  }
+
+  bool validateFormFields(Object? fieldValue) {
+    var isValid = true;
+
+    if (fieldValue == null || (fieldValue is String && fieldValue.isEmpty)) {
+      isValid = false;
+    } else if (fieldValue is bool) {
+      isValid = fieldValue;
+    }
+
+    return isValid;
+  }
+
   void onEmailChanged() {
     _state = _state.copyWith(
       buyer: _state.buyer.copyWith(email: emailController.text),
@@ -120,7 +136,16 @@ class OrderViewModel with ChangeNotifier {
     );
   }
 
-  void toPlacedOrder() {
+  void onFinishOrder() async {
+    startValidating();
+
+    if (state.tourists.any((element) => element == const Tourist())) {
+      return;
+    }
+    _toPlacedOrder();
+  }
+
+  void _toPlacedOrder() {
     context
         .pushNamed<bool>(
       RoutesNamesEnum.orderPlacedScreen.name,

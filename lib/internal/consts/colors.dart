@@ -27,4 +27,5 @@ class CustomColors {
   static const inputLabel = Color(0xFFA9ABB7);
   static const detailsButton = Color(0xFF2C3035);
   static const inputFieldText = Color(0xFF14142B);
+  static const error = Color(0x26EB5757);
 }

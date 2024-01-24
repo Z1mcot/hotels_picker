@@ -1,0 +1,4 @@
+enum ValidatorModesEnum {
+  validateOnFinish,
+  alwaysValidate,
+}
