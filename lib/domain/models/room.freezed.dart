@@ -21,10 +21,11 @@ Room _$RoomFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Room {
   int get id => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
-  int get price => throw _privateConstructorUsedError;
-  String get pricePer => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
+  int? get price => throw _privateConstructorUsedError;
+  String? get pricePer => throw _privateConstructorUsedError;
   List<String> get peculiarities => throw _privateConstructorUsedError;
+  @JsonKey(name: 'image_urls')
   List<String> get imageUrls => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -39,11 +40,11 @@ abstract class $RoomCopyWith<$Res> {
   @useResult
   $Res call(
       {int id,
-      String name,
-      int price,
-      String pricePer,
+      String? name,
+      int? price,
+      String? pricePer,
       List<String> peculiarities,
-      List<String> imageUrls});
+      @JsonKey(name: 'image_urls') List<String> imageUrls});
 }
 
 /// @nodoc
@@ -60,9 +61,9 @@ class _$RoomCopyWithImpl<$Res, $Val extends Room>
   @override
   $Res call({
     Object? id = null,
-    Object? name = null,
-    Object? price = null,
-    Object? pricePer = null,
+    Object? name = freezed,
+    Object? price = freezed,
+    Object? pricePer = freezed,
     Object? peculiarities = null,
     Object? imageUrls = null,
   }) {
@@ -71,18 +72,18 @@ class _$RoomCopyWithImpl<$Res, $Val extends Room>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      name: null == name
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      price: null == price
+              as String?,
+      price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as int,
-      pricePer: null == pricePer
+              as int?,
+      pricePer: freezed == pricePer
           ? _value.pricePer
           : pricePer // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       peculiarities: null == peculiarities
           ? _value.peculiarities
           : peculiarities // ignore: cast_nullable_to_non_nullable
@@ -104,11 +105,11 @@ abstract class _$$RoomImplCopyWith<$Res> implements $RoomCopyWith<$Res> {
   @useResult
   $Res call(
       {int id,
-      String name,
-      int price,
-      String pricePer,
+      String? name,
+      int? price,
+      String? pricePer,
       List<String> peculiarities,
-      List<String> imageUrls});
+      @JsonKey(name: 'image_urls') List<String> imageUrls});
 }
 
 /// @nodoc
@@ -122,9 +123,9 @@ class __$$RoomImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? name = null,
-    Object? price = null,
-    Object? pricePer = null,
+    Object? name = freezed,
+    Object? price = freezed,
+    Object? pricePer = freezed,
     Object? peculiarities = null,
     Object? imageUrls = null,
   }) {
@@ -133,18 +134,18 @@ class __$$RoomImplCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      name: null == name
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      price: null == price
+              as String?,
+      price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as int,
-      pricePer: null == pricePer
+              as int?,
+      pricePer: freezed == pricePer
           ? _value.pricePer
           : pricePer // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       peculiarities: null == peculiarities
           ? _value._peculiarities
           : peculiarities // ignore: cast_nullable_to_non_nullable
@@ -162,11 +163,11 @@ class __$$RoomImplCopyWithImpl<$Res>
 class _$RoomImpl implements _Room {
   const _$RoomImpl(
       {required this.id,
-      required this.name,
-      required this.price,
-      required this.pricePer,
-      required final List<String> peculiarities,
-      required final List<String> imageUrls})
+      this.name,
+      this.price,
+      this.pricePer,
+      final List<String> peculiarities = const [],
+      @JsonKey(name: 'image_urls') final List<String> imageUrls = const []})
       : _peculiarities = peculiarities,
         _imageUrls = imageUrls;
 
@@ -176,13 +177,14 @@ class _$RoomImpl implements _Room {
   @override
   final int id;
   @override
-  final String name;
+  final String? name;
   @override
-  final int price;
+  final int? price;
   @override
-  final String pricePer;
+  final String? pricePer;
   final List<String> _peculiarities;
   @override
+  @JsonKey()
   List<String> get peculiarities {
     if (_peculiarities is EqualUnmodifiableListView) return _peculiarities;
     // ignore: implicit_dynamic_type
@@ -191,6 +193,7 @@ class _$RoomImpl implements _Room {
 
   final List<String> _imageUrls;
   @override
+  @JsonKey(name: 'image_urls')
   List<String> get imageUrls {
     if (_imageUrls is EqualUnmodifiableListView) return _imageUrls;
     // ignore: implicit_dynamic_type
@@ -246,25 +249,26 @@ class _$RoomImpl implements _Room {
 abstract class _Room implements Room {
   const factory _Room(
       {required final int id,
-      required final String name,
-      required final int price,
-      required final String pricePer,
-      required final List<String> peculiarities,
-      required final List<String> imageUrls}) = _$RoomImpl;
+      final String? name,
+      final int? price,
+      final String? pricePer,
+      final List<String> peculiarities,
+      @JsonKey(name: 'image_urls') final List<String> imageUrls}) = _$RoomImpl;
 
   factory _Room.fromJson(Map<String, dynamic> json) = _$RoomImpl.fromJson;
 
   @override
   int get id;
   @override
-  String get name;
+  String? get name;
   @override
-  int get price;
+  int? get price;
   @override
-  String get pricePer;
+  String? get pricePer;
   @override
   List<String> get peculiarities;
   @override
+  @JsonKey(name: 'image_urls')
   List<String> get imageUrls;
   @override
   @JsonKey(ignore: true)

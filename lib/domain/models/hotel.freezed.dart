@@ -21,14 +21,19 @@ Hotel _$HotelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Hotel {
   int get id => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
-  String get adress => throw _privateConstructorUsedError;
-  int get minimalPrice => throw _privateConstructorUsedError;
-  String get priceForIt => throw _privateConstructorUsedError;
-  int get rating => throw _privateConstructorUsedError;
-  String get ratingName => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
+  String? get adress => throw _privateConstructorUsedError;
+  @JsonKey(name: 'minimal_price')
+  int? get minimalPrice => throw _privateConstructorUsedError;
+  @JsonKey(name: 'price_for_it')
+  String? get priceForIt => throw _privateConstructorUsedError;
+  int? get rating => throw _privateConstructorUsedError;
+  @JsonKey(name: 'rating_name')
+  String? get ratingName => throw _privateConstructorUsedError;
+  @JsonKey(name: 'image_urls')
   List<String> get imageUrls => throw _privateConstructorUsedError;
-  HotelDetails get aboutTheHotel => throw _privateConstructorUsedError;
+  @JsonKey(name: 'about_the_hotel')
+  HotelDetails? get aboutTheHotel => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -42,16 +47,16 @@ abstract class $HotelCopyWith<$Res> {
   @useResult
   $Res call(
       {int id,
-      String name,
-      String adress,
-      int minimalPrice,
-      String priceForIt,
-      int rating,
-      String ratingName,
-      List<String> imageUrls,
-      HotelDetails aboutTheHotel});
+      String? name,
+      String? adress,
+      @JsonKey(name: 'minimal_price') int? minimalPrice,
+      @JsonKey(name: 'price_for_it') String? priceForIt,
+      int? rating,
+      @JsonKey(name: 'rating_name') String? ratingName,
+      @JsonKey(name: 'image_urls') List<String> imageUrls,
+      @JsonKey(name: 'about_the_hotel') HotelDetails? aboutTheHotel});
 
-  $HotelDetailsCopyWith<$Res> get aboutTheHotel;
+  $HotelDetailsCopyWith<$Res>? get aboutTheHotel;
 }
 
 /// @nodoc
@@ -68,59 +73,63 @@ class _$HotelCopyWithImpl<$Res, $Val extends Hotel>
   @override
   $Res call({
     Object? id = null,
-    Object? name = null,
-    Object? adress = null,
-    Object? minimalPrice = null,
-    Object? priceForIt = null,
-    Object? rating = null,
-    Object? ratingName = null,
+    Object? name = freezed,
+    Object? adress = freezed,
+    Object? minimalPrice = freezed,
+    Object? priceForIt = freezed,
+    Object? rating = freezed,
+    Object? ratingName = freezed,
     Object? imageUrls = null,
-    Object? aboutTheHotel = null,
+    Object? aboutTheHotel = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      name: null == name
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      adress: null == adress
+              as String?,
+      adress: freezed == adress
           ? _value.adress
           : adress // ignore: cast_nullable_to_non_nullable
-              as String,
-      minimalPrice: null == minimalPrice
+              as String?,
+      minimalPrice: freezed == minimalPrice
           ? _value.minimalPrice
           : minimalPrice // ignore: cast_nullable_to_non_nullable
-              as int,
-      priceForIt: null == priceForIt
+              as int?,
+      priceForIt: freezed == priceForIt
           ? _value.priceForIt
           : priceForIt // ignore: cast_nullable_to_non_nullable
-              as String,
-      rating: null == rating
+              as String?,
+      rating: freezed == rating
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
-              as int,
-      ratingName: null == ratingName
+              as int?,
+      ratingName: freezed == ratingName
           ? _value.ratingName
           : ratingName // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       imageUrls: null == imageUrls
           ? _value.imageUrls
           : imageUrls // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      aboutTheHotel: null == aboutTheHotel
+      aboutTheHotel: freezed == aboutTheHotel
           ? _value.aboutTheHotel
           : aboutTheHotel // ignore: cast_nullable_to_non_nullable
-              as HotelDetails,
+              as HotelDetails?,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $HotelDetailsCopyWith<$Res> get aboutTheHotel {
-    return $HotelDetailsCopyWith<$Res>(_value.aboutTheHotel, (value) {
+  $HotelDetailsCopyWith<$Res>? get aboutTheHotel {
+    if (_value.aboutTheHotel == null) {
+      return null;
+    }
+
+    return $HotelDetailsCopyWith<$Res>(_value.aboutTheHotel!, (value) {
       return _then(_value.copyWith(aboutTheHotel: value) as $Val);
     });
   }
@@ -135,17 +144,17 @@ abstract class _$$PersonImplCopyWith<$Res> implements $HotelCopyWith<$Res> {
   @useResult
   $Res call(
       {int id,
-      String name,
-      String adress,
-      int minimalPrice,
-      String priceForIt,
-      int rating,
-      String ratingName,
-      List<String> imageUrls,
-      HotelDetails aboutTheHotel});
+      String? name,
+      String? adress,
+      @JsonKey(name: 'minimal_price') int? minimalPrice,
+      @JsonKey(name: 'price_for_it') String? priceForIt,
+      int? rating,
+      @JsonKey(name: 'rating_name') String? ratingName,
+      @JsonKey(name: 'image_urls') List<String> imageUrls,
+      @JsonKey(name: 'about_the_hotel') HotelDetails? aboutTheHotel});
 
   @override
-  $HotelDetailsCopyWith<$Res> get aboutTheHotel;
+  $HotelDetailsCopyWith<$Res>? get aboutTheHotel;
 }
 
 /// @nodoc
@@ -160,52 +169,52 @@ class __$$PersonImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? name = null,
-    Object? adress = null,
-    Object? minimalPrice = null,
-    Object? priceForIt = null,
-    Object? rating = null,
-    Object? ratingName = null,
+    Object? name = freezed,
+    Object? adress = freezed,
+    Object? minimalPrice = freezed,
+    Object? priceForIt = freezed,
+    Object? rating = freezed,
+    Object? ratingName = freezed,
     Object? imageUrls = null,
-    Object? aboutTheHotel = null,
+    Object? aboutTheHotel = freezed,
   }) {
     return _then(_$PersonImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      name: null == name
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      adress: null == adress
+              as String?,
+      adress: freezed == adress
           ? _value.adress
           : adress // ignore: cast_nullable_to_non_nullable
-              as String,
-      minimalPrice: null == minimalPrice
+              as String?,
+      minimalPrice: freezed == minimalPrice
           ? _value.minimalPrice
           : minimalPrice // ignore: cast_nullable_to_non_nullable
-              as int,
-      priceForIt: null == priceForIt
+              as int?,
+      priceForIt: freezed == priceForIt
           ? _value.priceForIt
           : priceForIt // ignore: cast_nullable_to_non_nullable
-              as String,
-      rating: null == rating
+              as String?,
+      rating: freezed == rating
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
-              as int,
-      ratingName: null == ratingName
+              as int?,
+      ratingName: freezed == ratingName
           ? _value.ratingName
           : ratingName // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       imageUrls: null == imageUrls
           ? _value._imageUrls
           : imageUrls // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      aboutTheHotel: null == aboutTheHotel
+      aboutTheHotel: freezed == aboutTheHotel
           ? _value.aboutTheHotel
           : aboutTheHotel // ignore: cast_nullable_to_non_nullable
-              as HotelDetails,
+              as HotelDetails?,
     ));
   }
 }
@@ -215,14 +224,14 @@ class __$$PersonImplCopyWithImpl<$Res>
 class _$PersonImpl implements _Person {
   const _$PersonImpl(
       {required this.id,
-      required this.name,
-      required this.adress,
-      required this.minimalPrice,
-      required this.priceForIt,
-      required this.rating,
-      required this.ratingName,
-      required final List<String> imageUrls,
-      required this.aboutTheHotel})
+      this.name,
+      this.adress,
+      @JsonKey(name: 'minimal_price') this.minimalPrice,
+      @JsonKey(name: 'price_for_it') this.priceForIt,
+      this.rating,
+      @JsonKey(name: 'rating_name') this.ratingName,
+      @JsonKey(name: 'image_urls') final List<String> imageUrls = const [],
+      @JsonKey(name: 'about_the_hotel') this.aboutTheHotel})
       : _imageUrls = imageUrls;
 
   factory _$PersonImpl.fromJson(Map<String, dynamic> json) =>
@@ -231,19 +240,23 @@ class _$PersonImpl implements _Person {
   @override
   final int id;
   @override
-  final String name;
+  final String? name;
   @override
-  final String adress;
+  final String? adress;
   @override
-  final int minimalPrice;
+  @JsonKey(name: 'minimal_price')
+  final int? minimalPrice;
   @override
-  final String priceForIt;
+  @JsonKey(name: 'price_for_it')
+  final String? priceForIt;
   @override
-  final int rating;
+  final int? rating;
   @override
-  final String ratingName;
+  @JsonKey(name: 'rating_name')
+  final String? ratingName;
   final List<String> _imageUrls;
   @override
+  @JsonKey(name: 'image_urls')
   List<String> get imageUrls {
     if (_imageUrls is EqualUnmodifiableListView) return _imageUrls;
     // ignore: implicit_dynamic_type
@@ -251,7 +264,8 @@ class _$PersonImpl implements _Person {
   }
 
   @override
-  final HotelDetails aboutTheHotel;
+  @JsonKey(name: 'about_the_hotel')
+  final HotelDetails? aboutTheHotel;
 
   @override
   String toString() {
@@ -310,35 +324,41 @@ class _$PersonImpl implements _Person {
 abstract class _Person implements Hotel {
   const factory _Person(
       {required final int id,
-      required final String name,
-      required final String adress,
-      required final int minimalPrice,
-      required final String priceForIt,
-      required final int rating,
-      required final String ratingName,
-      required final List<String> imageUrls,
-      required final HotelDetails aboutTheHotel}) = _$PersonImpl;
+      final String? name,
+      final String? adress,
+      @JsonKey(name: 'minimal_price') final int? minimalPrice,
+      @JsonKey(name: 'price_for_it') final String? priceForIt,
+      final int? rating,
+      @JsonKey(name: 'rating_name') final String? ratingName,
+      @JsonKey(name: 'image_urls') final List<String> imageUrls,
+      @JsonKey(name: 'about_the_hotel')
+      final HotelDetails? aboutTheHotel}) = _$PersonImpl;
 
   factory _Person.fromJson(Map<String, dynamic> json) = _$PersonImpl.fromJson;
 
   @override
   int get id;
   @override
-  String get name;
+  String? get name;
   @override
-  String get adress;
+  String? get adress;
   @override
-  int get minimalPrice;
+  @JsonKey(name: 'minimal_price')
+  int? get minimalPrice;
   @override
-  String get priceForIt;
+  @JsonKey(name: 'price_for_it')
+  String? get priceForIt;
   @override
-  int get rating;
+  int? get rating;
   @override
-  String get ratingName;
+  @JsonKey(name: 'rating_name')
+  String? get ratingName;
   @override
+  @JsonKey(name: 'image_urls')
   List<String> get imageUrls;
   @override
-  HotelDetails get aboutTheHotel;
+  @JsonKey(name: 'about_the_hotel')
+  HotelDetails? get aboutTheHotel;
   @override
   @JsonKey(ignore: true)
   _$$PersonImplCopyWith<_$PersonImpl> get copyWith =>

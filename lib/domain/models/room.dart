@@ -7,11 +7,11 @@ part 'room.g.dart';
 class Room with _$Room {
   const factory Room({
     required int id,
-    required String name,
-    required int price,
-    required String pricePer,
-    required List<String> peculiarities,
-    required List<String> imageUrls,
+    String? name,
+    int? price,
+    String? pricePer,
+    @Default([]) List<String> peculiarities,
+    @JsonKey(name: 'image_urls') @Default([]) List<String> imageUrls,
   }) = _Room;
 
   factory Room.fromJson(Map<String, Object?> json) => _$RoomFromJson(json);

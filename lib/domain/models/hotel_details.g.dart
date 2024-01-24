@@ -8,10 +8,11 @@ part of 'hotel_details.dart';
 
 _$HotelDetailsImpl _$$HotelDetailsImplFromJson(Map<String, dynamic> json) =>
     _$HotelDetailsImpl(
-      description: json['description'] as String,
-      peculiarities: (json['peculiarities'] as List<dynamic>)
-          .map((e) => e as String)
-          .toList(),
+      description: json['description'] as String?,
+      peculiarities: (json['peculiarities'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          const [],
     );
 
 Map<String, dynamic> _$$HotelDetailsImplToJson(_$HotelDetailsImpl instance) =>

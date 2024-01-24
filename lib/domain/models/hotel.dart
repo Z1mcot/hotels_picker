@@ -8,14 +8,14 @@ part 'hotel.g.dart';
 class Hotel with _$Hotel {
   const factory Hotel({
     required int id,
-    required String name,
-    required String adress,
-    required int minimalPrice,
-    required String priceForIt,
-    required int rating,
-    required String ratingName,
-    required List<String> imageUrls,
-    required HotelDetails aboutTheHotel,
+    String? name,
+    String? adress,
+    @JsonKey(name: 'minimal_price') int? minimalPrice,
+    @JsonKey(name: 'price_for_it') String? priceForIt,
+    int? rating,
+    @JsonKey(name: 'rating_name') String? ratingName,
+    @JsonKey(name: 'image_urls') @Default([]) List<String> imageUrls,
+    @JsonKey(name: 'about_the_hotel') HotelDetails? aboutTheHotel,
   }) = _Person;
 
   factory Hotel.fromJson(Map<String, Object?> json) => _$HotelFromJson(json);
