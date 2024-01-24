@@ -45,14 +45,14 @@ class DetailsButtonList extends StatelessWidget {
         children: [
           Text(
             r.title,
-            style: CustomTextStyles.detailsButton,
+            style: CustomTextStyles.hotelDetailsButton,
           ),
           const SizedBox(
             height: 2,
           ),
           Text(
             r.description,
-            style: CustomTextStyles.detailsSubtitle,
+            style: CustomTextStyles.hotelDetailsSubtitle,
           )
         ],
       ),

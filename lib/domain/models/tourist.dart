@@ -6,12 +6,12 @@ part 'tourist.g.dart';
 @freezed
 class Tourist with _$Tourist {
   const factory Tourist({
-    @JsonKey(name: 'first_name') required String firstName,
-    required String surname,
-    required DateTime birthdate,
-    required String citizenship,
-    @JsonKey(name: 'passport_number') required String passportNumber,
-    @JsonKey(name: 'passport_expiry_date') required DateTime passportExpiryDate,
+    @JsonKey(name: 'first_name') String? firstName,
+    String? surname,
+    DateTime? birthdate,
+    String? citizenship,
+    @JsonKey(name: 'passport_number') String? passportNumber,
+    @JsonKey(name: 'passport_expiry_date') DateTime? passportExpiryDate,
   }) = _Tourist;
 
   factory Tourist.fromJson(Map<String, dynamic> json) =>

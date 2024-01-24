@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_libphonenumber/flutter_libphonenumber.dart';
 import 'package:intl/intl.dart';
+
 import 'package:hotels_picker/internal/consts/colors.dart';
 
 class CarouselUtils {
@@ -39,5 +41,36 @@ extension IntExtensions on int {
     symbol: '\u20bd',
   );
 
+  static final _ordinals = {
+    1: 'Первый',
+    2: 'Второй',
+    3: 'Третий',
+    4: 'Четвёртый',
+    5: 'Пятый',
+    6: 'Шестой',
+    7: 'Седьмой',
+    8: 'Восьмой',
+    9: 'Девятый',
+    10: 'Десятый',
+  };
+
   String asCurrency() => _currencyFormat.format(this);
+
+  String toOrdinal() {
+    return _ordinals[this]!;
+  }
 }
+
+CountryWithPhoneCode ruPhoneFormatter() => CountryWithPhoneCode(
+      phoneCode: '7',
+      countryCode: 'RU',
+      exampleNumberMobileNational: '+7 (201) 555-01-23',
+      exampleNumberFixedLineNational: '(201) 555-0123',
+      phoneMaskMobileNational: '+7 (000) 000-00-00',
+      phoneMaskFixedLineNational: '(000) 000-0000',
+      exampleNumberMobileInternational: '+7 (201) 555-01-23',
+      exampleNumberFixedLineInternational: '+7 (201) 555-0123',
+      phoneMaskMobileInternational: '+0 (000) 000-00-00',
+      phoneMaskFixedLineInternational: '+7 (000) 000-0000',
+      countryName: 'Russia',
+    );

@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:hotels_picker/internal/dependencies/repository_module.dart';
-import 'package:hotels_picker/ui/navigation/main_router.dart';
-import 'package:hotels_picker/ui/screens/hotel/hotel_screen_state.dart';
 
-class HotelScreenViewModel with ChangeNotifier {
+import 'package:hotels_picker/ui/screens/hotel/hotel_state.dart';
+import 'package:hotels_picker/domain/enums/routes_names_enum.dart';
+import 'package:hotels_picker/internal/dependencies/repository_module.dart';
+
+class HotelViewModel with ChangeNotifier {
   final _apiRepository = RepositoryModule.apiRepository();
 
   BuildContext context;
-  HotelScreenViewModel(this.context) {
+  HotelViewModel(this.context, {required int hotelId}) {
+    _state = HotelState(hotelId: hotelId);
     _asyncInit();
   }
 
-  HotelScreenState _state = HotelScreenState();
-  HotelScreenState get state => _state;
-  set state(HotelScreenState state) {
+  late HotelState _state;
+  HotelState get state => _state;
+  set state(HotelState state) {
     _state = state;
     notifyListeners();
   }
@@ -35,5 +37,10 @@ class HotelScreenViewModel with ChangeNotifier {
     );
   }
 
-  void toRooms() => context.go(MainNavigatorRoutes.roomWidget);
+  void toRooms() => context.pushNamed(
+        RoutesNamesEnum.roomsList.name,
+        pathParameters: {
+          'hotelId': '${state.hotelId}',
+        },
+      );
 }

@@ -1,8 +1,9 @@
 import 'package:dio/dio.dart';
+import 'package:retrofit/retrofit.dart';
+
 import 'package:hotels_picker/domain/models/booking.dart';
 import 'package:hotels_picker/domain/models/hotel.dart';
-import 'package:hotels_picker/domain/models/room.dart';
-import 'package:retrofit/retrofit.dart';
+import 'package:hotels_picker/domain/models/rooms_responce.dart';
 
 part 'api_client.g.dart';
 
@@ -16,7 +17,7 @@ abstract class ApiClient {
 
   /// Requests avaliable rooms for selected hotel
   @GET('/v3/157ea342-a8a3-4e00-a8e6-a87d170aa0a2')
-  Future<List<Room>> getAvaliableRooms();
+  Future<RoomsResponce> getAvaliableRooms();
 
   /// Requests booking info
   @GET('/v3/63866c74-d593-432c-af8e-f279d1a8d2ff')

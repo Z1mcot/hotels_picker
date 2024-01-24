@@ -1,33 +1,42 @@
 import 'package:go_router/go_router.dart';
+import 'package:hotels_picker/domain/enums/routes_names_enum.dart';
+import 'package:hotels_picker/ui/navigation/custom_route.dart';
+import 'package:hotels_picker/ui/screens/errors/not_found_screen.dart';
 import 'package:hotels_picker/ui/screens/hotel/hotel_screen.dart';
 import 'package:hotels_picker/ui/screens/order/order_screen.dart';
-import 'package:hotels_picker/ui/screens/room/room_screen.dart';
-
-class MainNavigatorRoutes {
-  static const String hotelWidget = '/hotels/1';
-  static const String roomWidget = '/hotels/:hotelId/rooms';
-  static const String orderWidget = '/order';
-}
+import 'package:hotels_picker/ui/screens/placed_order/placed_order_screen.dart';
+import 'package:hotels_picker/ui/screens/rooms/rooms_screen.dart';
 
 class MainRouter {
   static GoRouter? _router;
 
   static GoRouter _init() {
     _router ??= GoRouter(
-      initialLocation: MainNavigatorRoutes.hotelWidget,
+      initialLocation: initialRoute,
+      errorBuilder: (_, __) => const NotFoundScreen(),
       routes: [
-        GoRoute(
-          path: MainNavigatorRoutes.hotelWidget,
-          builder: (_, state) => HotelScreen.create(),
+        CustomRoute(
+          routeName: RoutesNamesEnum.hotelScreen,
+          builder: (_, state) {
+            const hotelId = 1;
+            return HotelScreen.create(hotelId: hotelId);
+          },
         ),
-        GoRoute(
-          path: MainNavigatorRoutes.roomWidget,
-          builder: (_, __) => const RoomScreen(),
+        CustomRoute(
+          routeName: RoutesNamesEnum.roomsList,
+          builder: (_, state) {
+            final hotelId = int.parse(state.pathParameters['hotelId']!);
+            return RoomsScreen.create(hotelId: hotelId);
+          },
         ),
-        GoRoute(
-          path: MainNavigatorRoutes.orderWidget,
-          builder: (_, __) => const OrderScreen(),
-        )
+        CustomRoute(
+          routeName: RoutesNamesEnum.orderScreen,
+          builder: (_, __) => OrderScreen.create(),
+        ),
+        CustomRoute(
+          routeName: RoutesNamesEnum.orderPlacedScreen,
+          builder: (_, __) => const PlacedOrderScreen(),
+        ),
       ],
     );
     return _router!;

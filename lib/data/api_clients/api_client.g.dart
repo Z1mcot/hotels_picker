@@ -46,13 +46,13 @@ class _ApiClient implements ApiClient {
   }
 
   @override
-  Future<List<Room>> getAvaliableRooms() async {
+  Future<RoomsResponce> getAvaliableRooms() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
-    final _result =
-        await _dio.fetch<List<dynamic>>(_setStreamType<List<Room>>(Options(
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<RoomsResponce>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -68,9 +68,7 @@ class _ApiClient implements ApiClient {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    var value = _result.data!
-        .map((dynamic i) => Room.fromJson(i as Map<String, dynamic>))
-        .toList();
+    final value = RoomsResponce.fromJson(_result.data!);
     return value;
   }
 

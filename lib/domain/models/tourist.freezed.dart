@@ -21,14 +21,14 @@ Tourist _$TouristFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Tourist {
   @JsonKey(name: 'first_name')
-  String get firstName => throw _privateConstructorUsedError;
-  String get surname => throw _privateConstructorUsedError;
-  DateTime get birthdate => throw _privateConstructorUsedError;
-  String get citizenship => throw _privateConstructorUsedError;
+  String? get firstName => throw _privateConstructorUsedError;
+  String? get surname => throw _privateConstructorUsedError;
+  DateTime? get birthdate => throw _privateConstructorUsedError;
+  String? get citizenship => throw _privateConstructorUsedError;
   @JsonKey(name: 'passport_number')
-  String get passportNumber => throw _privateConstructorUsedError;
+  String? get passportNumber => throw _privateConstructorUsedError;
   @JsonKey(name: 'passport_expiry_date')
-  DateTime get passportExpiryDate => throw _privateConstructorUsedError;
+  DateTime? get passportExpiryDate => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -41,12 +41,12 @@ abstract class $TouristCopyWith<$Res> {
       _$TouristCopyWithImpl<$Res, Tourist>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'first_name') String firstName,
-      String surname,
-      DateTime birthdate,
-      String citizenship,
-      @JsonKey(name: 'passport_number') String passportNumber,
-      @JsonKey(name: 'passport_expiry_date') DateTime passportExpiryDate});
+      {@JsonKey(name: 'first_name') String? firstName,
+      String? surname,
+      DateTime? birthdate,
+      String? citizenship,
+      @JsonKey(name: 'passport_number') String? passportNumber,
+      @JsonKey(name: 'passport_expiry_date') DateTime? passportExpiryDate});
 }
 
 /// @nodoc
@@ -62,38 +62,38 @@ class _$TouristCopyWithImpl<$Res, $Val extends Tourist>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? firstName = null,
-    Object? surname = null,
-    Object? birthdate = null,
-    Object? citizenship = null,
-    Object? passportNumber = null,
-    Object? passportExpiryDate = null,
+    Object? firstName = freezed,
+    Object? surname = freezed,
+    Object? birthdate = freezed,
+    Object? citizenship = freezed,
+    Object? passportNumber = freezed,
+    Object? passportExpiryDate = freezed,
   }) {
     return _then(_value.copyWith(
-      firstName: null == firstName
+      firstName: freezed == firstName
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
-              as String,
-      surname: null == surname
+              as String?,
+      surname: freezed == surname
           ? _value.surname
           : surname // ignore: cast_nullable_to_non_nullable
-              as String,
-      birthdate: null == birthdate
+              as String?,
+      birthdate: freezed == birthdate
           ? _value.birthdate
           : birthdate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      citizenship: null == citizenship
+              as DateTime?,
+      citizenship: freezed == citizenship
           ? _value.citizenship
           : citizenship // ignore: cast_nullable_to_non_nullable
-              as String,
-      passportNumber: null == passportNumber
+              as String?,
+      passportNumber: freezed == passportNumber
           ? _value.passportNumber
           : passportNumber // ignore: cast_nullable_to_non_nullable
-              as String,
-      passportExpiryDate: null == passportExpiryDate
+              as String?,
+      passportExpiryDate: freezed == passportExpiryDate
           ? _value.passportExpiryDate
           : passportExpiryDate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
     ) as $Val);
   }
 }
@@ -106,12 +106,12 @@ abstract class _$$TouristImplCopyWith<$Res> implements $TouristCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'first_name') String firstName,
-      String surname,
-      DateTime birthdate,
-      String citizenship,
-      @JsonKey(name: 'passport_number') String passportNumber,
-      @JsonKey(name: 'passport_expiry_date') DateTime passportExpiryDate});
+      {@JsonKey(name: 'first_name') String? firstName,
+      String? surname,
+      DateTime? birthdate,
+      String? citizenship,
+      @JsonKey(name: 'passport_number') String? passportNumber,
+      @JsonKey(name: 'passport_expiry_date') DateTime? passportExpiryDate});
 }
 
 /// @nodoc
@@ -125,38 +125,38 @@ class __$$TouristImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? firstName = null,
-    Object? surname = null,
-    Object? birthdate = null,
-    Object? citizenship = null,
-    Object? passportNumber = null,
-    Object? passportExpiryDate = null,
+    Object? firstName = freezed,
+    Object? surname = freezed,
+    Object? birthdate = freezed,
+    Object? citizenship = freezed,
+    Object? passportNumber = freezed,
+    Object? passportExpiryDate = freezed,
   }) {
     return _then(_$TouristImpl(
-      firstName: null == firstName
+      firstName: freezed == firstName
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
-              as String,
-      surname: null == surname
+              as String?,
+      surname: freezed == surname
           ? _value.surname
           : surname // ignore: cast_nullable_to_non_nullable
-              as String,
-      birthdate: null == birthdate
+              as String?,
+      birthdate: freezed == birthdate
           ? _value.birthdate
           : birthdate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      citizenship: null == citizenship
+              as DateTime?,
+      citizenship: freezed == citizenship
           ? _value.citizenship
           : citizenship // ignore: cast_nullable_to_non_nullable
-              as String,
-      passportNumber: null == passportNumber
+              as String?,
+      passportNumber: freezed == passportNumber
           ? _value.passportNumber
           : passportNumber // ignore: cast_nullable_to_non_nullable
-              as String,
-      passportExpiryDate: null == passportExpiryDate
+              as String?,
+      passportExpiryDate: freezed == passportExpiryDate
           ? _value.passportExpiryDate
           : passportExpiryDate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
     ));
   }
 }
@@ -165,31 +165,31 @@ class __$$TouristImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$TouristImpl implements _Tourist {
   const _$TouristImpl(
-      {@JsonKey(name: 'first_name') required this.firstName,
-      required this.surname,
-      required this.birthdate,
-      required this.citizenship,
-      @JsonKey(name: 'passport_number') required this.passportNumber,
-      @JsonKey(name: 'passport_expiry_date') required this.passportExpiryDate});
+      {@JsonKey(name: 'first_name') this.firstName,
+      this.surname,
+      this.birthdate,
+      this.citizenship,
+      @JsonKey(name: 'passport_number') this.passportNumber,
+      @JsonKey(name: 'passport_expiry_date') this.passportExpiryDate});
 
   factory _$TouristImpl.fromJson(Map<String, dynamic> json) =>
       _$$TouristImplFromJson(json);
 
   @override
   @JsonKey(name: 'first_name')
-  final String firstName;
+  final String? firstName;
   @override
-  final String surname;
+  final String? surname;
   @override
-  final DateTime birthdate;
+  final DateTime? birthdate;
   @override
-  final String citizenship;
+  final String? citizenship;
   @override
   @JsonKey(name: 'passport_number')
-  final String passportNumber;
+  final String? passportNumber;
   @override
   @JsonKey(name: 'passport_expiry_date')
-  final DateTime passportExpiryDate;
+  final DateTime? passportExpiryDate;
 
   @override
   String toString() {
@@ -235,31 +235,31 @@ class _$TouristImpl implements _Tourist {
 
 abstract class _Tourist implements Tourist {
   const factory _Tourist(
-      {@JsonKey(name: 'first_name') required final String firstName,
-      required final String surname,
-      required final DateTime birthdate,
-      required final String citizenship,
-      @JsonKey(name: 'passport_number') required final String passportNumber,
+      {@JsonKey(name: 'first_name') final String? firstName,
+      final String? surname,
+      final DateTime? birthdate,
+      final String? citizenship,
+      @JsonKey(name: 'passport_number') final String? passportNumber,
       @JsonKey(name: 'passport_expiry_date')
-      required final DateTime passportExpiryDate}) = _$TouristImpl;
+      final DateTime? passportExpiryDate}) = _$TouristImpl;
 
   factory _Tourist.fromJson(Map<String, dynamic> json) = _$TouristImpl.fromJson;
 
   @override
   @JsonKey(name: 'first_name')
-  String get firstName;
+  String? get firstName;
   @override
-  String get surname;
+  String? get surname;
   @override
-  DateTime get birthdate;
+  DateTime? get birthdate;
   @override
-  String get citizenship;
+  String? get citizenship;
   @override
   @JsonKey(name: 'passport_number')
-  String get passportNumber;
+  String? get passportNumber;
   @override
   @JsonKey(name: 'passport_expiry_date')
-  DateTime get passportExpiryDate;
+  DateTime? get passportExpiryDate;
   @override
   @JsonKey(ignore: true)
   _$$TouristImplCopyWith<_$TouristImpl> get copyWith =>

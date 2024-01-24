@@ -10,7 +10,10 @@ class ApiDataRepository implements ApiRepository {
   ApiDataRepository(this._api);
 
   @override
-  Future<List<Room>> getAvaliableRooms() => _api.getAvaliableRooms();
+  Future<List<Room>> getAvaliableRooms() async {
+    final roomsResponce = await _api.getAvaliableRooms();
+    return roomsResponce.rooms;
+  }
 
   @override
   Future<Booking> getBookingInfo() => _api.getBookingInfo();

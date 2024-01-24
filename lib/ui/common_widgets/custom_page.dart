@@ -10,15 +10,15 @@ class CustomPage extends StatelessWidget {
   final Widget child;
   final bool canGoBack; // TODO think about exit strategy
   final EdgeInsetsGeometry? padding;
-  final Widget? bottomWidget;
+  final Color? backgroundColor;
 
   const CustomPage({
     super.key,
     required this.child,
-    required this.canGoBack,
+    this.canGoBack = true,
     this.title,
     this.padding,
-    this.bottomWidget,
+    this.backgroundColor,
   });
 
   void onBack(BuildContext context) {
@@ -35,7 +35,7 @@ class CustomPage extends StatelessWidget {
         canPop: canGoBack,
         onPopInvoked: (_) => onBack(context),
         child: Scaffold(
-          backgroundColor: CustomColors.pageBackground,
+          backgroundColor: backgroundColor ?? CustomColors.pageBackground,
           appBar: AppBar(
             leading: canGoBack
                 ? GoBackButton(onBack: onBack)
@@ -49,12 +49,13 @@ class CustomPage extends StatelessWidget {
             centerTitle: true,
             title: Text(
               title ?? '',
+              maxLines: 2,
               style: CustomTextStyles.screenTitle,
             ),
           ),
           body: SafeArea(
             child: Padding(
-              padding: padding ?? const EdgeInsets.symmetric(horizontal: 16),
+              padding: padding ?? EdgeInsets.zero,
               child: child,
             ),
           ),

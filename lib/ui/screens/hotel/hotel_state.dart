@@ -1,21 +1,24 @@
 import 'package:hotels_picker/domain/models/hotel.dart';
 
-class HotelScreenState {
+class HotelState {
+  final int hotelId;
   final Hotel? hotel;
   final int currentPicIndex;
   final bool isLoading;
-  HotelScreenState({
+  HotelState({
+    required this.hotelId,
     this.hotel,
     this.currentPicIndex = 0,
     this.isLoading = false,
   });
 
-  HotelScreenState copyWith({
+  HotelState copyWith({
     Hotel? hotel,
     int? currentPicIndex,
     bool? isLoading,
   }) {
-    return HotelScreenState(
+    return HotelState(
+      hotelId: hotelId,
       hotel: hotel ?? this.hotel,
       currentPicIndex: currentPicIndex ?? this.currentPicIndex,
       isLoading: isLoading ?? this.isLoading,

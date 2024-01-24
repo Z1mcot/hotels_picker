@@ -15,4 +15,34 @@ class Images {
     'assets/images/excluded.svg',
     width: 20,
   );
+
+  static final arrowForward = SvgPicture.asset(
+    'assets/images/arrow_forward.svg',
+    width: 24,
+  );
+
+  static final arrowBack = SvgPicture.asset(
+    'assets/images/arrow_back.svg',
+    width: 32,
+  );
+
+  static final arrowUp = SvgPicture.asset(
+    'assets/images/arrow_up.svg',
+    width: 32,
+  );
+
+  static final arrowDown = SvgPicture.asset(
+    'assets/images/arrow_down.svg',
+    width: 32,
+  );
+
+  static final plus = SvgPicture.asset(
+    'assets/images/plus.svg',
+    width: 32,
+  );
+
+  static final party = SvgPicture.asset(
+    'assets/images/party.svg',
+    width: 44,
+  );
 }

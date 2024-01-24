@@ -34,10 +34,12 @@ class ButtonList<T> extends StatelessWidget {
       itemCount: list!.length,
       itemBuilder: (BuildContext context, int index) {
         var item = list![index];
-        return RowIconButton(
-          icon: icon(item),
-          middle: title(item),
-          onTap: onTap == null ? null : () => onTap!(item),
+        return Material(
+          child: RowIconButton(
+            icon: icon(item),
+            middle: title(item),
+            onTap: onTap == null ? null : () => onTap!(item),
+          ),
         );
       },
     );
