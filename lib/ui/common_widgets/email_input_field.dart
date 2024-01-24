@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:hotels_picker/domain/enums/validator_modes.dart';
 import 'package:hotels_picker/ui/common_widgets/input_field.dart';
 
-class EmailInputField extends StatefulWidget {
+class EmailInputField extends StatelessWidget {
   final TextEditingController? controller;
   final bool shouldValidate;
   final bool Function(Object? val) validator;
@@ -13,18 +13,13 @@ class EmailInputField extends StatefulWidget {
       required this.shouldValidate,
       required this.validator});
 
-  @override
-  State<EmailInputField> createState() => _EmailInputFieldState();
-}
-
-class _EmailInputFieldState extends State<EmailInputField> {
   bool _validator(Object? val) {
     var isValid = false;
     if (val is String) {
       isValid = EmailValidator.validate(val);
     }
 
-    widget.validator(isValid);
+    validator(isValid);
     return isValid;
   }
 
@@ -33,12 +28,12 @@ class _EmailInputFieldState extends State<EmailInputField> {
     return Column(
       children: [
         InputField(
-          shouldValidate: widget.shouldValidate,
+          shouldValidate: shouldValidate,
           validator: _validator,
           validatorMode: ValidatorModesEnum.alwaysValidate,
           label: 'Почта',
           keyboardType: TextInputType.emailAddress,
-          controller: widget.controller,
+          controller: controller,
           hint: 'user@example.com',
         ),
       ],

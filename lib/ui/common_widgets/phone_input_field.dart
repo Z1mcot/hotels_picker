@@ -4,7 +4,7 @@ import 'package:hotels_picker/domain/enums/validator_modes.dart';
 import 'package:hotels_picker/internal/utils.dart';
 import 'package:hotels_picker/ui/common_widgets/input_field.dart';
 
-class PhoneInputField extends StatefulWidget {
+class PhoneInputField extends StatelessWidget {
   final TextEditingController? controller;
   final bool shouldValidate;
   final bool Function(Object? val) validator;
@@ -15,16 +15,9 @@ class PhoneInputField extends StatefulWidget {
     required this.validator,
   });
 
-  @override
-  State<PhoneInputField> createState() => _PhoneInputFieldState();
-}
-
-class _PhoneInputFieldState extends State<PhoneInputField> {
-  final phoneRegExp = RegExp(r'^\+\d{1,2} \(\d{3}\) \d{3}-\d{2}-\d{2}$');
-
   void onTap() {
-    if (widget.controller?.text.isEmpty ?? false) {
-      widget.controller?.text = '+7 (';
+    if (controller?.text.isEmpty ?? false) {
+      controller?.text = '+7 (';
     }
   }
 
@@ -35,7 +28,7 @@ class _PhoneInputFieldState extends State<PhoneInputField> {
       isValid = phoneRegExp.hasMatch(val);
     }
 
-    widget.validator(isValid);
+    validator(isValid);
     return isValid;
   }
 
@@ -45,11 +38,11 @@ class _PhoneInputFieldState extends State<PhoneInputField> {
       children: [
         InputField(
           label: 'Номер телефона',
-          shouldValidate: widget.shouldValidate,
+          shouldValidate: shouldValidate,
           validator: _validator,
           validatorMode: ValidatorModesEnum.alwaysValidate,
           keyboardType: TextInputType.phone,
-          controller: widget.controller,
+          controller: controller,
           hint: '+7 (900) 000-00-00',
           onTap: onTap,
           inputFormatters: [
