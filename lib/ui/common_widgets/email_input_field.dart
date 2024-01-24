@@ -1,41 +1,31 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
+import 'package:hotels_picker/domain/enums/validator_modes.dart';
 import 'package:hotels_picker/ui/common_widgets/input_field.dart';
 
 class EmailInputField extends StatefulWidget {
   final TextEditingController? controller;
-  const EmailInputField({super.key, this.controller});
+  final bool shouldValidate;
+  final bool Function(Object? val) validator;
+  const EmailInputField(
+      {super.key,
+      this.controller,
+      required this.shouldValidate,
+      required this.validator});
 
   @override
   State<EmailInputField> createState() => _EmailInputFieldState();
 }
 
 class _EmailInputFieldState extends State<EmailInputField> {
-  bool _isValid = true;
-  final FocusNode _focus = FocusNode();
-
-  @override
-  void initState() {
-    super.initState();
-    _focus.addListener(onFocusChanged);
-  }
-
-  @override
-  void dispose() {
-    _focus.removeListener(onFocusChanged);
-    _focus.dispose();
-    super.dispose();
-  }
-
-  void onFocusChanged() {
-    if (widget.controller == null || _focus.hasFocus) {
-      _isValid = true;
-      return;
+  bool _validator(Object? val) {
+    var isValid = false;
+    if (val is String) {
+      isValid = EmailValidator.validate(val);
     }
 
-    setState(() {
-      _isValid = EmailValidator.validate(widget.controller!.text);
-    });
+    widget.validator(isValid);
+    return isValid;
   }
 
   @override
@@ -43,23 +33,13 @@ class _EmailInputFieldState extends State<EmailInputField> {
     return Column(
       children: [
         InputField(
-          focusNode: _focus,
+          shouldValidate: widget.shouldValidate,
+          validator: _validator,
+          validatorMode: ValidatorModesEnum.alwaysValidate,
           label: 'Почта',
           keyboardType: TextInputType.emailAddress,
           controller: widget.controller,
           hint: 'user@example.com',
-          error: _isValid
-              ? null
-              : Container(
-                  alignment: Alignment.centerLeft,
-                  child: const Text(
-                    'Неправильный формат почты',
-                    style: TextStyle(
-                      color: Colors.red,
-                      letterSpacing: -0.6,
-                    ),
-                  ),
-                ),
         ),
       ],
     );

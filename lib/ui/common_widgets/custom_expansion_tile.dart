@@ -3,7 +3,7 @@ import 'package:hotels_picker/domain/models/tourist.dart';
 import 'package:hotels_picker/internal/consts/colors.dart';
 import 'package:hotels_picker/internal/consts/images.dart';
 import 'package:hotels_picker/internal/consts/text_styles.dart';
-import 'package:hotels_picker/ui/common_widgets/country_picker.dart';
+import 'package:hotels_picker/ui/common_widgets/country_input_field.dart';
 import 'package:hotels_picker/ui/common_widgets/date_input_field.dart';
 import 'package:hotels_picker/ui/common_widgets/input_field.dart';
 import 'package:hotels_picker/ui/screens/order/order_view_model.dart';
@@ -104,6 +104,8 @@ class _CustomExpansionTileState extends State<CustomExpansionTile> {
               onChanged: widget.onNameChanged,
               hint: 'Ivan',
               initialValue: tourist?.firstName,
+              shouldValidate: viewModel.state.shouldValidateForms,
+              validator: viewModel.validateFormFields,
             ),
           ),
           Padding(
@@ -113,6 +115,8 @@ class _CustomExpansionTileState extends State<CustomExpansionTile> {
               onChanged: widget.onSurnameChanged,
               hint: 'Ivanovich',
               initialValue: tourist?.surname,
+              shouldValidate: viewModel.state.shouldValidateForms,
+              validator: viewModel.validateFormFields,
             ),
           ),
           Padding(
@@ -124,6 +128,8 @@ class _CustomExpansionTileState extends State<CustomExpansionTile> {
               firstDate: DateTime(1900),
               lastDate: DateTime.now(),
               initialValue: tourist?.birthdate,
+              shouldValidate: viewModel.state.shouldValidateForms,
+              validator: viewModel.validateFormFields,
             ),
           ),
           Padding(
@@ -132,6 +138,8 @@ class _CustomExpansionTileState extends State<CustomExpansionTile> {
               label: 'Гражданство',
               onChanged: widget.onCitizenshipChanged,
               initialValue: tourist?.citizenship,
+              shouldValidate: viewModel.state.shouldValidateForms,
+              validator: viewModel.validateFormFields,
             ),
           ),
           Padding(
@@ -140,6 +148,8 @@ class _CustomExpansionTileState extends State<CustomExpansionTile> {
               label: 'Номер загранпаспорта',
               onChanged: widget.onPassportChanged,
               initialValue: tourist?.passportNumber,
+              shouldValidate: viewModel.state.shouldValidateForms,
+              validator: viewModel.validateFormFields,
             ),
           ),
           Padding(
@@ -151,6 +161,8 @@ class _CustomExpansionTileState extends State<CustomExpansionTile> {
               firstDate: dtNow,
               lastDate: DateTime(dtNow.year + 10, dtNow.month, dtNow.day),
               initialValue: tourist?.passportExpiryDate,
+              shouldValidate: viewModel.state.shouldValidateForms,
+              validator: viewModel.validateFormFields,
             ),
           ),
         ],

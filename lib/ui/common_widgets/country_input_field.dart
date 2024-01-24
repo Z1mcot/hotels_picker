@@ -6,12 +6,16 @@ class CountryInputField extends StatefulWidget {
   final void Function(String val)? onChanged;
   final String label;
   final String? initialValue;
+  final bool shouldValidate;
+  final bool Function(Object? val) validator;
 
   const CountryInputField({
     super.key,
     required this.label,
     this.onChanged,
     this.initialValue,
+    required this.shouldValidate,
+    required this.validator,
   });
 
   @override
@@ -30,7 +34,6 @@ class _CountryInputFieldState extends State<CountryInputField> {
 
   @override
   void dispose() {
-    _controller.dispose();
     super.dispose();
   }
 
@@ -49,6 +52,8 @@ class _CountryInputFieldState extends State<CountryInputField> {
   @override
   Widget build(BuildContext context) {
     return InputField(
+      shouldValidate: widget.shouldValidate,
+      validator: widget.validator,
       readOnly: true,
       label: widget.label,
       controller: _controller,
